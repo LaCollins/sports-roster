@@ -12,13 +12,18 @@ render() {
   const { player } = this.props;
 
   return(
+    <div>
     <div className="card text-white bg-dark playerCard">
       <img className="card-img-top" src={player.imageUrl} alt={player.name} />
       <div className="card-body">
         <h5 className="card-title">{player.name}</h5>
         <p className="card-text">Position: {player.position}</p>
       </div>
+      <div className="card-footer">
+      <button className="btn btn-outline-info">Edit</button>
     </div>
+    </div>
+   </div>
   );
   }
 }
