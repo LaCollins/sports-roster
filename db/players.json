@@ -1,0 +1,20 @@
+{
+  "player1": {
+    "imageUrl": "https://raw.githubusercontent.com/LaCollins/sports-roster/master/images/korinth-close.jpg",
+    "name": "Korinth",
+    "position": "Tank/DPS",
+    "uid": "JrJ2axuHSdQWsfZwPRU0s7tWIn53"
+    },
+  "player2": {
+    "imageUrl": "https://raw.githubusercontent.com/LaCollins/sports-roster/master/images/galuna-close.jpg",
+    "name": "Galuna",
+    "position": "Healer/DPS",
+    "uid": "JrJ2axuHSdQWsfZwPRU0s7tWIn53"
+    },
+  "player3": {
+    "imageUrl": "https://github.com/LaCollins/sports-roster/blob/master/images/tautaurus-close.jpg",
+    "name": "Tautaurus",
+    "position": "Tank",
+    "uid": "3413412"
+  }
+}
