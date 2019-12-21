@@ -8,6 +8,7 @@ class SinglePlayer extends React.Component {
     player: playerShape.playerShape,
     setEditMode: PropTypes.func,
     setPlayerToEdit: PropTypes.func,
+    deletePlayer: PropTypes.func,
   }
 
   setEditMode = (e) => {
@@ -15,6 +16,12 @@ class SinglePlayer extends React.Component {
     e.preventDefault();
     setEditMode(true);
     setPlayerToEdit(player);
+  }
+
+  deletePlayerEvent = (e) => {
+    e.preventDefault();
+    const { deletePlayer, player } = this.props;
+    deletePlayer(player.id);
   }
 
 render() {
@@ -28,7 +35,8 @@ render() {
         <h5 className="card-title">{player.name}</h5>
         <p className="card-text">Position: {player.position}</p>
       </div>
-      <div className="card-footer">
+      <div className="card-footer d-flex justify-content-around">
+      <button className="btn btn-outline-info" onClick={this.deletePlayerEvent}>Delete</button>
       <button className="btn btn-outline-info" onClick={this.setEditMode}>Edit</button>
     </div>
     </div>
