@@ -43,6 +43,14 @@ class TeamContainer extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  deletePlayer = (playerId) => {
+    playerData.deletePlayer(playerId)
+      .then(() => {
+        this.getPlayers();
+      })
+      .catch((error) => console.error(error));
+  }
+
   setEditMode = (editMode) => {
     this.setState({ editMode, showPlayerForm: true });
   }
@@ -66,7 +74,7 @@ class TeamContainer extends React.Component {
       <div>
       <button className="btn btn-info m-2" onClick={this.setShowPlayerForm}>Add New Player</button>
       { this.state.showPlayerForm && <PlayerForm addPlayer={this.addPlayer} closeForm={this.closeForm} editMode={this.state.editMode} playerToEdit={this.state.playerToEdit} updatePlayer={this.updatePlayer} />}
-      <div className="playerContainer row m-2 d-flex justify-content-around">{this.state.players.map((player) => <SinglePlayer key={player.id} player={player} setEditMode={this.setEditMode} setPlayerToEdit={this.setPlayerToEdit} />)}</div>
+      <div className="playerContainer row m-2 d-flex justify-content-around">{this.state.players.map((player) => <SinglePlayer key={player.id} player={player} setEditMode={this.setEditMode} setPlayerToEdit={this.setPlayerToEdit} deletePlayer={this.deletePlayer} />)}</div>
       </div>
     );
   }
