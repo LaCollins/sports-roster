@@ -21,7 +21,6 @@ Add player:
 Edit player:
 ![on load](https://github.com/LaCollins/sports-roster/raw/master/screenshots/4.PNG)
 
-
 ## Instructions for how to run the project
 
 * Clone down this project from [Github](https://github.com/LaCollins/sports-roster).
