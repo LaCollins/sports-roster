@@ -9,6 +9,8 @@ class TeamContainer extends React.Component {
   state = {
     players: [],
     showPlayerForm: false,
+    playerToEdit: {},
+    editMode: false,
   }
 
   componentDidMount() {
@@ -32,6 +34,23 @@ class TeamContainer extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  updatePlayer = (playerId, updatedPlayer) => {
+    playerData.updatePlayer(playerId, updatedPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ editMode: false, showPlayerForm: false });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  setEditMode = (editMode) => {
+    this.setState({ editMode, showPlayerForm: true });
+  }
+
+  setPlayerToEdit = (player) => {
+    this.setState({ playerToEdit: player });
+  }
+
   setShowPlayerForm = (e) => {
     e.preventDefault();
     this.setState({ showPlayerForm: true });
@@ -46,8 +65,8 @@ class TeamContainer extends React.Component {
     return(
       <div>
       <button className="btn btn-info m-2" onClick={this.setShowPlayerForm}>Add New Player</button>
-      { this.state.showPlayerForm && <PlayerForm addPlayer={this.addPlayer} closeForm={this.closeForm} />}
-      <div className="playerContainer row m-2 d-flex justify-content-around">{this.state.players.map((player) => <SinglePlayer key={player.id} player={player} />)}</div>
+      { this.state.showPlayerForm && <PlayerForm addPlayer={this.addPlayer} closeForm={this.closeForm} editMode={this.state.editMode} playerToEdit={this.state.playerToEdit} updatePlayer={this.updatePlayer} />}
+      <div className="playerContainer row m-2 d-flex justify-content-around">{this.state.players.map((player) => <SinglePlayer key={player.id} player={player} setEditMode={this.setEditMode} setPlayerToEdit={this.setPlayerToEdit} />)}</div>
       </div>
     );
   }
