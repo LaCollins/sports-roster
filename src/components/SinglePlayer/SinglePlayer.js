@@ -28,7 +28,8 @@ render() {
         <h5 className="card-title">{player.name}</h5>
         <p className="card-text">Position: {player.position}</p>
       </div>
-      <div className="card-footer">
+      <div className="card-footer d-flex justify-content-around">
+      <button className="btn btn-outline-info">Delete</button>
       <button className="btn btn-outline-info" onClick={this.setEditMode}>Edit</button>
     </div>
     </div>
