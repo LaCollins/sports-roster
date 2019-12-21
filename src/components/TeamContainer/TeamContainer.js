@@ -23,16 +23,30 @@ class TeamContainer extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  addPlayer = (newPlayer) => {
+    playerData.savePlayer(newPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ showPlayerForm: false });
+      })
+      .catch((error) => console.error(error));
+  }
+
   setShowPlayerForm = (e) => {
     e.preventDefault();
     this.setState({ showPlayerForm: true });
+  }
+
+  closeForm = (e) => {
+    e.preventDefault();
+    this.setState({ showPlayerForm: false });
   }
 
   render() {
     return(
       <div>
       <button className="btn btn-info m-2" onClick={this.setShowPlayerForm}>Add New Player</button>
-      { this.state.showPlayerForm && <PlayerForm />}
+      { this.state.showPlayerForm && <PlayerForm addPlayer={this.addPlayer} closeForm={this.closeForm} />}
       <div className="playerContainer row m-2 d-flex justify-content-around">{this.state.players.map((player) => <SinglePlayer key={player.id} player={player} />)}</div>
       </div>
     );
